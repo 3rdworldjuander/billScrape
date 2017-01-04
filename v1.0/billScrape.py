@@ -34,8 +34,8 @@ driver.maximize_window()
 username = driver.find_element_by_id("userName")
 password = driver.find_element_by_id("password")
 #### HIDE THIS ####
-username.send_keys("bobis834919@slid.dum")
-password.send_keys("Sgw-Jg8-bqM-PrK")
+username.send_keys("")
+password.send_keys("")
 #### HIDE THIS ####
 driver.find_element_by_id("loginButton").click()
 
@@ -123,8 +123,8 @@ def send_email(user, pwd, recipient, subject, body):
     import smtplib
 
 #### HIDE THIS ####
-    gmail_user = "campo99"
-    gmail_pwd = "Maryrose8"
+    gmail_user = ""
+    gmail_pwd = ""
 #### HIDE THIS ####
 
     FROM = user
@@ -147,8 +147,8 @@ def send_email(user, pwd, recipient, subject, body):
         print "failed to send mail"
 
 #### HIDE THIS ####
-user = "campo99@gmail.com"
-pwd = "Maryrose8"
+user = ""
+pwd = ""
 #### HIDE THIS ####
 
 # Sending individual email
