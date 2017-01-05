@@ -63,14 +63,14 @@ def get_bill(after_login):
     import time
 
     config = ConfigParser.ConfigParser()
-    config.read("billScrapeConfig.ini")
+    config.read(config_file_path)
 
     # Webdriver Configuration
     # Using chromedriver
-    # driver = webdriver.Chrome(executable_path = config.get('webdriver', 'path_to_chromedriver'))
-    # driver.maximize_window()
+#    driver = webdriver.Chrome(executable_path = config.get('webdriver', 'path_to_chromedriver'))
+#    driver.maximize_window()
     # Using phantomjs
-    driver = webdriver.PhantomJS(executable_path  = config.get('webdriver', 'path_to_phantomjs') , service_log_path = config.get('webdriver', 'Phantom_log_path'))
+    driver = webdriver.PhantomJS(executable_path  = config.get('webdriver', 'path_to_phantomjs') , service_log_path = config.get('webdriver', 'phantom_log_path'))
     driver.set_window_size(1120, 550)
     print "webdriver activated"
 
@@ -160,7 +160,7 @@ def notify(emails, names, bill_date, subs_labels, subs_adj_values):
     from socket import gethostname
 
     config = ConfigParser.ConfigParser()
-    config.read("billScrapeConfig.ini")
+    config.read(config_file_path)
 
     user = config.get('secret', 'gmail_uname')
     pwd = config.get('secret', 'gmail_passwd')
@@ -175,11 +175,14 @@ def notify(emails, names, bill_date, subs_labels, subs_adj_values):
         send_email(user, pwd, recipient, subject, body)
 
 # Read ini config file
+config_file_path = "/Users/Maria/Scripts/billScrapeConfig.ini"
 config = ConfigParser.ConfigParser()
-config.read("billScrapeConfig.ini")
+config.read(config_file_path)
 print time.strftime("%c")
 # Load email configuration
-emails = getlist(config.get('mail-list', 'emails_test'))
+emails = getlist(config.get('mail-list', 'emails_live'))
+print emails
+print "phantomjs"
 # Load after-login configuration
 bill_from = config.get('website', 'xpath_current')
 
